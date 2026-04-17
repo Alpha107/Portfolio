@@ -761,7 +761,7 @@
 
     .creative-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
       margin-top: 16px;
     }
@@ -789,6 +789,10 @@
 
     .creative-card.art-card {
       background: linear-gradient(135deg, #0d1f0f 0%, #1a472a 100%);
+    }
+
+    .creative-card.robotics-card {
+      background: linear-gradient(135deg, #0a1520 0%, #1a3a5c 100%);
     }
 
     .creative-card::before {
@@ -1716,16 +1720,26 @@
           <span class="creative-link">Visit Photography Portfolio →</span>
         </div>
       </a>
-      <div class="creative-card art-card reveal reveal-delay-2">
+      <a class="creative-card art-card reveal reveal-delay-2" href="painting.html" target="_blank">
         <div class="creative-bg-text">ART</div>
         <div class="creative-content">
           <span class="creative-label">Ongoing</span>
           <div class="creative-title">Painting & Visual Art</div>
           <p class="creative-desc">Painting and drawing as a practice in observation — the same eye that composes a
             photograph also guides a brush. Art as a language where code falls short.</p>
-          <span class="creative-link" style="cursor:default;">Art &amp; Painting</span>
+          <span class="creative-link">Visit Art Portfolio →</span>
         </div>
-      </div>
+      </a>
+      <a class="creative-card robotics-card reveal reveal-delay-3" href="robotics.html" target="_blank">
+        <div class="creative-bg-text">BOT</div>
+        <div class="creative-content">
+          <span class="creative-label">Engineering</span>
+          <div class="creative-title">Robotics Projects</div>
+          <p class="creative-desc">Obstacle avoidance, line-following, IoT smart systems, and AI-driven vision robots.
+            Hardware and software fused into machines that think, move, and respond.</p>
+          <span class="creative-link">View Robotics Projects →</span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -1783,6 +1797,8 @@
       <a href="#contact">Contact</a>
       <a href="https://github.com/Alpha107" target="_blank">GitHub ↗</a>
       <a href="portfolio.html" target="_blank">Photography ↗</a>
+      <a href="painting.html" target="_blank">Painting ↗</a>
+      <a href="robotics.html" target="_blank">Robotics ↗</a>
     </div>
   </footer>
 
