@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abashesh Ranabhat — Robotics Projects</title>
+  <meta name="description"
+    content="Abashesh Ranabhat — Robotics & Embedded Systems projects. Obstacle avoidance, line-following, IoT, and AI-driven robotics from Kathmandu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=Newsreader:ital,wght@0,300;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f4ef;
+      --bg2: #efebe3;
+      --ink: #0d0d0d;
+      --ink2: #1a1a1a;
+      --muted: #8a8278;
+      --border: #d8d2c8;
+      --accent: #1a472a;
+      --accent2: #2d6a4f;
+      --accent-light: #d4edda;
+      --card: #ffffff;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    .cur {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform .1s;
+    }
+    .cur-ring {
+      width: 38px; height: 38px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .3s, height .3s, opacity .3s;
+    }
+    .cur-ring.big { width: 64px; height: 64px; opacity: .35; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 56px;
+      background: rgba(247,244,239,.96);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, padding .3s;
+      backdrop-filter: blur(12px);
+    }
+    nav.scrolled { border-color: var(--border); padding: 16px 56px; }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 700;
+      color: var(--ink); text-decoration: none; letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a {
+      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-back-btn {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+      background: var(--accent); color: #fff; border: none;
+      padding: 8px 18px; cursor: none; text-decoration: none;
+      transition: background .25s;
+    }
+    .nav-back-btn:hover { background: var(--accent2); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 56px 80px; position: relative; overflow: hidden;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px; opacity: .35;
+    }
+    .hero-circuit {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: 520px; height: 520px; opacity: .08;
+    }
+    .hero-tag {
+      font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp .8s .2s forwards;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 800; line-height: .92; letter-spacing: -.03em;
+      color: var(--ink); margin-bottom: 24px;
+      opacity: 0; animation: fadeUp .8s .35s forwards;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-role {
+      font-family: 'Newsreader', serif; font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+      color: var(--muted); margin-bottom: 48px;
+      opacity: 0; animation: fadeUp .8s .5s forwards;
+    }
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px;
+      opacity: 0; animation: fadeUp .8s .65s forwards;
+    }
+    .hero-pill {
+      font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+      border: 1px solid var(--border); color: var(--muted);
+      padding: 7px 16px; background: var(--white);
+    }
+    .hero-stats {
+      display: flex; gap: 48px;
+      opacity: 0; animation: fadeUp .8s .8s forwards;
+    }
+    .hero-stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .hsi-n {
+      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+      color: var(--accent); line-height: 1;
+    }
+    .hsi-l { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTIONS */
+    section { padding: 96px 56px; }
+    section:nth-child(even) { background: var(--bg2); }
+
+    .sec-label {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border); padding-top: 12px; margin-bottom: 52px;
+      font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: var(--muted);
+    }
+    .sec-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .sec-title em { font-style: italic; color: var(--accent); font-family: 'Newsreader', serif; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
+    .reveal.on { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .reveal-delay-4 { transition-delay: .48s; }
+
+    /* FEATURED PROJECT */
+    #featured { background: var(--ink2); }
+    .feat-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .feat-num {
+      font-family: 'Syne', sans-serif; font-size: 6rem; font-weight: 800;
+      color: var(--accent); line-height: 1; opacity: .15; margin-bottom: -20px;
+    }
+    .feat-title {
+      font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800; color: var(--white); margin-bottom: 14px; line-height: 1.1;
+    }
+    .feat-sub {
+      font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px;
+    }
+    .feat-desc {
+      font-size: .82rem; line-height: 1.95; color: rgba(255,255,255,.55); margin-bottom: 32px;
+    }
+    .feat-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .feat-tag {
+      font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.45);
+      padding: 5px 12px;
+    }
+    .feat-right { display: flex; flex-direction: column; gap: 2px; }
+    .feat-detail {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      padding: 24px 28px;
+    }
+    .fd-label { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 8px; }
+    .fd-val { font-family: 'Syne', sans-serif; font-weight: 600; font-size: .9rem; color: rgba(255,255,255,.7); }
+
+    /* PROJECT CARDS */
+    #projects { background: var(--bg); }
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2px;
+    }
+    .proj-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 36px 32px;
+      transition: box-shadow .3s, transform .3s, border-color .3s;
+    }
+    .proj-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+    .proj-num {
+      font-family: 'Syne', sans-serif; font-size: .65rem; font-weight: 700;
+      letter-spacing: .18em; color: var(--accent); display: block; margin-bottom: 18px;
+    }
+    .proj-type {
+      font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 12px;
+    }
+    .proj-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem;
+      line-height: 1.3; color: var(--ink); margin-bottom: 14px;
+    }
+    .proj-desc { font-size: .75rem; line-height: 1.85; color: var(--muted); margin-bottom: 22px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tag {
+      font-size: .56rem; letter-spacing: .14em; text-transform: uppercase;
+      border: 1px solid var(--border); color: var(--muted); padding: 4px 10px;
+      transition: color .25s, border-color .25s;
+    }
+    .proj-card:hover .proj-tag { border-color: var(--accent-light); color: var(--accent); }
+
+    /* SKILLS / STACK */
+    #stack { background: var(--bg2); }
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .stack-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 32px 28px;
+    }
+    .stack-icon { font-size: 1.5rem; margin-bottom: 16px; }
+    .stack-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: .9rem;
+      color: var(--ink); margin-bottom: 10px;
+    }
+    .stack-items {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .stack-item {
+      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--muted); padding: 4px 10px;
+    }
+
+    /* TIMELINE */
+    #timeline { background: var(--bg); }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item {
+      display: grid; grid-template-columns: 120px 1px 1fr; gap: 0 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tl-item:first-child { border-top: 1px solid var(--border); }
+    .tl-year {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--accent); padding-top: 3px;
+    }
+    .tl-line { background: var(--border); position: relative; }
+    .tl-line::before {
+      content: ''; position: absolute; top: 8px; left: 50%;
+      transform: translateX(-50%);
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .tl-content { padding-left: 0; }
+    .tl-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .tl-desc { font-size: .75rem; line-height: 1.85; color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 56px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--bg2);
+    }
+    .foot-left { font-size: .62rem; letter-spacing: .14em; color: var(--muted); }
+    .foot-left span { color: var(--accent); }
+    .foot-right { display: flex; gap: 28px; }
+    .foot-right a {
+      font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .25s;
+    }
+    .foot-right a:hover { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      nav, section, footer { padding-left: 24px; padding-right: 24px; }
+      .feat-grid { grid-template-columns: 1fr; gap: 40px; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .tl-item { grid-template-columns: 80px 1px 1fr; gap: 0 20px; }
+    }
+    @media (max-width: 580px) {
+      .stack-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cur" id="cur"></div>
+  <div class="cur-ring" id="curRing"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="index.html">Abashesh<span>.</span>dev</a>
+    <div class="nav-links">
+      <a href="index.html">← Portfolio</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#timeline">Timeline</a>
+      <a href="https://github.com/Alpha107" target="_blank">GitHub ↗</a>
+      <a class="nav-back-btn" href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <!-- Circuit board decorative SVG -->
+    <svg class="hero-circuit" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="60" width="400" height="400" rx="4" stroke="currentColor" stroke-width="1"/>
+      <line x1="60" y1="160" x2="160" y2="160" stroke="currentColor" stroke-width="1"/>
+      <line x1="160" y1="60" x2="160" y2="260" stroke="currentColor" stroke-width="1"/>
+      <line x1="160" y1="260" x2="360" y2="260" stroke="currentColor" stroke-width="1"/>
+      <line x1="360" y1="60" x2="360" y2="360" stroke="currentColor" stroke-width="1"/>
+      <line x1="60" y1="360" x2="360" y2="360" stroke="currentColor" stroke-width="1"/>
+      <line x1="260" y1="160" x2="460" y2="160" stroke="currentColor" stroke-width="1"/>
+      <line x1="260" y1="60" x2="260" y2="160" stroke="currentColor" stroke-width="1"/>
+      <line x1="160" y1="360" x2="160" y2="460" stroke="currentColor" stroke-width="1"/>
+      <circle cx="160" cy="160" r="6" fill="currentColor"/>
+      <circle cx="360" cy="160" r="6" fill="currentColor"/>
+      <circle cx="160" cy="360" r="6" fill="currentColor"/>
+      <circle cx="360" cy="360" r="6" fill="currentColor"/>
+      <circle cx="260" cy="260" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="220" y="220" width="80" height="80" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="160" cy="260" r="4" fill="currentColor" opacity="0.5"/>
+      <circle cx="260" cy="160" r="4" fill="currentColor" opacity="0.5"/>
+    </svg>
+    <div class="hero-tag">Robotics · Embedded Systems · IoT</div>
+    <h1 class="hero-name">Robotics &<br><span>Engineering</span></h1>
+    <p class="hero-role">Hardware-software integration, real-time control & intelligent systems</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Arduino</span>
+      <span class="hero-pill">Embedded C++</span>
+      <span class="hero-pill">Sensor Fusion</span>
+      <span class="hero-pill">Motor Control</span>
+      <span class="hero-pill">IoT</span>
+      <span class="hero-pill">Computer Vision</span>
+      <span class="hero-pill">RF / Bluetooth</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-item"><div class="hsi-n">6+</div><div class="hsi-l">Projects</div></div>
+      <div class="hero-stat-item"><div class="hsi-n">3+</div><div class="hsi-l">Years Building</div></div>
+      <div class="hero-stat-item"><div class="hsi-n">IoT</div><div class="hsi-l">& Embedded</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECT -->
+  <section id="featured">
+    <div class="sec-label reveal" style="border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.3);">
+      <span>Featured Project</span><span>01</span>
+    </div>
+    <div class="feat-grid">
+      <div class="reveal">
+        <div class="feat-num">01</div>
+        <div class="feat-sub">Computer Vision · AI Robotics</div>
+        <div class="feat-title">AI-Powered Vision Robot</div>
+        <p class="feat-desc">
+          A robotics system integrating computer vision and deep learning for real-time object detection, tracking, and autonomous navigation. The robot perceives its environment using a camera pipeline fed into a lightweight CNN, making intelligent navigation decisions with sub-100ms latency.
+        </p>
+        <p class="feat-desc">
+          Bridging the gap between AI research and embedded hardware — the same techniques used in large-scale autonomous vehicles, miniaturized and optimized for microcontroller constraints.
+        </p>
+        <div class="feat-tags">
+          <span class="feat-tag">Python</span>
+          <span class="feat-tag">OpenCV</span>
+          <span class="feat-tag">TensorFlow Lite</span>
+          <span class="feat-tag">Raspberry Pi</span>
+          <span class="feat-tag">Arduino</span>
+          <span class="feat-tag">C++</span>
+          <span class="feat-tag">Computer Vision</span>
+        </div>
+      </div>
+      <div class="feat-right reveal reveal-delay-2">
+        <div class="feat-detail">
+          <div class="fd-label">Domain</div>
+          <div class="fd-val">AI-driven Robotics</div>
+        </div>
+        <div class="feat-detail">
+          <div class="fd-label">Hardware</div>
+          <div class="fd-val">Raspberry Pi + Arduino</div>
+        </div>
+        <div class="feat-detail">
+          <div class="fd-label">Stack</div>
+          <div class="fd-val">Python · OpenCV · TF Lite</div>
+        </div>
+        <div class="feat-detail">
+          <div class="fd-label">Status</div>
+          <div class="fd-val">Research & Prototyping</div>
+        </div>
+        <div class="feat-detail">
+          <div class="fd-label">Key challenge</div>
+          <div class="fd-val">Real-time inference on edge hardware</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT CARDS -->
+  <section id="projects">
+    <div class="sec-label reveal">
+      <span>All Robotics Projects</span><span>02</span>
+    </div>
+    <h2 class="sec-title reveal">Machines that <em>think, move & respond</em></h2>
+    <p class="reveal" style="font-size:.78rem;color:var(--muted);margin-bottom:48px;line-height:1.8;max-width:600px;">
+      From obstacle-avoiding rovers to IoT smart systems — each project is an exercise in translating algorithmic thinking into physical, real-world behaviour.
+    </p>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <span class="proj-num">01</span>
+        <span class="proj-type">Computer Vision · AI</span>
+        <div class="proj-title">AI-Powered Vision Robot</div>
+        <p class="proj-desc">Integrated computer vision and deep learning for autonomous object detection and tracking. Built lightweight CNN inference pipeline running on edge hardware with real-time motor control feedback loop.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">OpenCV</span>
+          <span class="proj-tag">TF Lite</span>
+          <span class="proj-tag">Raspberry Pi</span>
+          <span class="proj-tag">C++</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <span class="proj-num">02</span>
+        <span class="proj-type">Robotics · Navigation</span>
+        <div class="proj-title">Obstacle Avoidance Robot</div>
+        <p class="proj-desc">Designed an autonomous obstacle avoidance system using ultrasonic and IR sensors. Implemented decision trees and real-time path correction algorithms directly in embedded C++ for responsive navigation.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Arduino</span>
+          <span class="proj-tag">Ultrasonic Sensor</span>
+          <span class="proj-tag">IR Sensor</span>
+          <span class="proj-tag">C++</span>
+          <span class="proj-tag">Motor Driver</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <span class="proj-num">03</span>
+        <span class="proj-type">Robotics · Embedded</span>
+        <div class="proj-title">Line-Following Robot</div>
+        <p class="proj-desc">Built a PID-controlled line-following robot using IR sensor arrays. Tuned proportional-integral-derivative parameters to achieve smooth, high-speed track navigation with minimal oscillation.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Arduino</span>
+          <span class="proj-tag">PID Control</span>
+          <span class="proj-tag">IR Array</span>
+          <span class="proj-tag">C++</span>
+          <span class="proj-tag">PWM Motor</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <span class="proj-num">04</span>
+        <span class="proj-type">IoT · Automation</span>
+        <div class="proj-title">IoT Smart Irrigation System</div>
+        <p class="proj-desc">Developed a soil moisture-sensing smart irrigation controller. The system reads sensor data, makes automated watering decisions, and logs readings — integrating microcontroller logic with IoT cloud connectivity.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Arduino</span>
+          <span class="proj-tag">Soil Sensor</span>
+          <span class="proj-tag">ESP8266</span>
+          <span class="proj-tag">IoT</span>
+          <span class="proj-tag">C++</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <span class="proj-num">05</span>
+        <span class="proj-type">IoT · Monitoring</span>
+        <div class="proj-title">Smart Parking & Water Tank Monitor</div>
+        <p class="proj-desc">Engineered IoT-based smart parking and water level monitoring systems. Ultrasonic sensors detect occupancy and water level; data is relayed via wireless modules for real-time remote monitoring and alerts.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Arduino</span>
+          <span class="proj-tag">Ultrasonic</span>
+          <span class="proj-tag">ESP32</span>
+          <span class="proj-tag">Automation</span>
+          <span class="proj-tag">C++</span>
+        </div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-3">
+        <span class="proj-num">06</span>
+        <span class="proj-type">Robotics · Wireless Control</span>
+        <div class="proj-title">Sound & RF Remote Controlled Robots</div>
+        <p class="proj-desc">Designed sound-controlled and RF/Bluetooth remote-controlled robotic prototypes. Built full hardware-software pipelines: command decoding, motor control logic, and real-time wireless communication interfaces.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Arduino</span>
+          <span class="proj-tag">RF Module</span>
+          <span class="proj-tag">Bluetooth HC-05</span>
+          <span class="proj-tag">Sound Sensor</span>
+          <span class="proj-tag">C++</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack">
+    <div class="sec-label reveal"><span>Technical Stack</span><span>03</span></div>
+    <h2 class="sec-title reveal">Tools of the <em>craft</em></h2>
+    <p class="reveal" style="font-size:.78rem;color:var(--muted);margin-bottom:48px;line-height:1.8;">
+      The hardware and software that power the builds.
+    </p>
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <div class="stack-icon">⚙️</div>
+        <div class="stack-title">Microcontrollers</div>
+        <div class="stack-items">
+          <span class="stack-item">Arduino Uno</span>
+          <span class="stack-item">Arduino Mega</span>
+          <span class="stack-item">Raspberry Pi</span>
+          <span class="stack-item">ESP8266</span>
+          <span class="stack-item">ESP32</span>
+        </div>
+      </div>
+      <div class="stack-card reveal reveal-delay-1">
+        <div class="stack-icon">📡</div>
+        <div class="stack-title">Sensors & Actuators</div>
+        <div class="stack-items">
+          <span class="stack-item">Ultrasonic (HC-SR04)</span>
+          <span class="stack-item">IR Sensor</span>
+          <span class="stack-item">Soil Moisture</span>
+          <span class="stack-item">Sound Sensor</span>
+          <span class="stack-item">Servo Motor</span>
+          <span class="stack-item">DC Motor</span>
+        </div>
+      </div>
+      <div class="stack-card reveal reveal-delay-2">
+        <div class="stack-icon">📶</div>
+        <div class="stack-title">Communication</div>
+        <div class="stack-items">
+          <span class="stack-item">Bluetooth HC-05</span>
+          <span class="stack-item">RF 433MHz</span>
+          <span class="stack-item">Wi-Fi (ESP)</span>
+          <span class="stack-item">I2C</span>
+          <span class="stack-item">UART</span>
+        </div>
+      </div>
+      <div class="stack-card reveal reveal-delay-1">
+        <div class="stack-icon">💻</div>
+        <div class="stack-title">Languages</div>
+        <div class="stack-items">
+          <span class="stack-item">C++</span>
+          <span class="stack-item">Python</span>
+          <span class="stack-item">Arduino IDE</span>
+          <span class="stack-item">MicroPython</span>
+        </div>
+      </div>
+      <div class="stack-card reveal reveal-delay-2">
+        <div class="stack-icon">🧠</div>
+        <div class="stack-title">AI & Vision</div>
+        <div class="stack-items">
+          <span class="stack-item">OpenCV</span>
+          <span class="stack-item">TensorFlow Lite</span>
+          <span class="stack-item">NumPy</span>
+          <span class="stack-item">Edge Inference</span>
+        </div>
+      </div>
+      <div class="stack-card reveal reveal-delay-3">
+        <div class="stack-icon">🔧</div>
+        <div class="stack-title">Concepts</div>
+        <div class="stack-items">
+          <span class="stack-item">PID Control</span>
+          <span class="stack-item">PWM</span>
+          <span class="stack-item">Sensor Fusion</span>
+          <span class="stack-item">Real-time Systems</span>
+          <span class="stack-item">PCB Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="sec-label reveal"><span>Robotics Journey</span><span>04</span></div>
+    <h2 class="sec-title reveal">Building, <em>iterating</em>, shipping</h2>
+    <p class="reveal" style="font-size:.78rem;color:var(--muted);margin-bottom:56px;line-height:1.8;">
+      The progression from first circuit to AI-integrated systems.
+    </p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">2021</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">First Steps — Arduino & Basic Electronics</div>
+          <p class="tl-desc">Began exploring embedded systems through Arduino. Built first LED control circuits, understood PWM, learned C++ for microcontrollers, and soldered first prototype boards.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-year">2022</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Autonomous Robots — Obstacle Avoidance & Line Following</div>
+          <p class="tl-desc">Designed and built obstacle-avoiding and line-following robots. Implemented sensor integration, motor driver circuits, and real-time control logic. Introduced to PID tuning.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-year">2022</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">Wireless Control — RF & Bluetooth Robots</div>
+          <p class="tl-desc">Extended projects into wireless domains: sound-activated and RF/Bluetooth remote-controlled robotic systems with custom command decoding and real-time motor control.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-year">2023</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">IoT Systems — Smart Environments</div>
+          <p class="tl-desc">Built IoT-based smart irrigation, parking, and water monitoring systems. Integrated ESP modules for wireless data, cloud logging, and automated decision-making in physical environments.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-year">2024–25</div>
+        <div class="tl-line"></div>
+        <div class="tl-content">
+          <div class="tl-title">AI + Robotics — Computer Vision & Edge Inference</div>
+          <p class="tl-desc">Merged AI research with robotics hardware. Developed vision-based autonomous systems using OpenCV and TensorFlow Lite. Research presentation at ICT-CEEL 2023. Ongoing work in AI-driven robotics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-left">© 2025 <span>Abashesh Ranabhat</span> · Robotics & Engineering</div>
+    <div class="foot-right">
+      <a href="index.html">← Portfolio</a>
+      <a href="portfolio.html" target="_blank">Photography ↗</a>
+      <a href="painting.html">Painting ↗</a>
+      <a href="https://github.com/Alpha107" target="_blank">GitHub ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    /* CURSOR */
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('curRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function tick() {
+      cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+    document.querySelectorAll('a, button, .proj-card, .stack-card').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('big'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('big'));
+    });
+
+    /* NAV */
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* REVEAL */
+    const ro = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+    }, { threshold: .08, rootMargin: '0px 0px -48px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  </script>
+</body>
+</html>
