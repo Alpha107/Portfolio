@@ -1,0 +1,270 @@
+/* PHOTOGRAPHY PAGE STYLES */
+.photography-container {
+  padding-top: 80px;
+}
+
+#photography-hero {
+  padding: 120px 56px 60px;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+#photography-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+#photography-hero .section-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* FILTER BUTTONS */
+#photography-filters {
+  padding: 40px 56px 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+}
+
+/* GALLERY GRID */
+#photography-gallery {
+  padding: 40px 56px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(26, 71, 42, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0),
+    rgba(13, 13, 13, 0.8)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h3 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.gallery-overlay p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.95);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  background: var(--card);
+  border-radius: 4px;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.lightbox img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(247, 244, 239, 0.95);
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ink);
+  cursor: none;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  background: var(--accent);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.image-info {
+  padding: 30px;
+  background: var(--card);
+}
+
+.image-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.image-info p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #photography-hero {
+    padding: 80px 28px 40px;
+  }
+
+  #photography-filters {
+    padding: 30px 28px 20px;
+  }
+
+  #photography-gallery {
+    padding: 30px 28px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .lightbox {
+    padding: 0;
+  }
+
+  .lightbox-content {
+    border-radius: 0;
+  }
+
+  .close-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  .image-info {
+    padding: 20px;
+  }
+
+  .image-info h2 {
+    font-size: 1.2rem;
+  }
+}

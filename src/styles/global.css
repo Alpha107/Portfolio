@@ -1,0 +1,172 @@
+/* BASE STYLES & VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f8f7f4;
+  --bg2: #f0ebe5;
+  --ink: #0f0e0c;
+  --ink2: #1a1815;
+  --muted: #6d6961;
+  --border: #d4cfc5;
+  --accent: #1a472a;
+  --accent2: #2d6a4f;
+  --accent3: #40916c;
+  --accent-light: #d4edda;
+  --text-light: #9b9993;
+  --white: #ffffff;
+  --card: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent2);
+}
+
+/* BUTTONS */
+button {
+  cursor: pointer;
+  border: none;
+  font-family: 'Figtree', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 2px solid;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.cta-btn.primary {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  margin-right: 1rem;
+}
+
+.cta-btn.primary:hover {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 71, 42, 0.15);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.cta-btn.secondary:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 56px;
+}
+
+.section-header {
+  margin-bottom: 60px;
+  max-width: 800px;
+}
+
+.section-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 28px;
+  }
+
+  .section-header h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    padding: 16px 28px !important;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .cta-btn {
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
+  }
+}
