@@ -770,14 +770,12 @@
   color: var(--muted);
   line-height: 1.75;
   margin-bottom: 24px;
-  flex: 1;
 }
 
 .project-footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: auto;
 }
 
 .project-tags {
