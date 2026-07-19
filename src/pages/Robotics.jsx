@@ -133,6 +133,29 @@ export default function Robotics() {
         </div>
       </section>
 
+      <section id="robotics-journey">
+        <div className="journey-body">
+          <p>
+            My robotics journey started in 2023 with an Arduino Uno, a few ultrasonic sensors, and a lot of
+            trial and error — an obstacle-avoiding RC car and a line-following robot were some of my first
+            working prototypes. From there I moved into sound-activated and remote-controlled builds, then
+            into IoT territory with automated irrigation and parking systems, learning to think in sensors,
+            feedback loops, and real-world reliability rather than code that only has to run once in a lab.
+            That same year, I presented research on intelligent systems at the intersection of software and
+            physical-world robotics at ICT-CEEL 2023, Khopa College of Engineering.
+          </p>
+          <p>
+            That hands-on foundation later shaped how I taught: as a Coding &amp; Robotics Instructor at Mero
+            Coding Class, I designed embedded-systems workshops and mentored students building their own
+            Arduino projects from scratch. It also pushed my own work further — from ESP32 firmware for a
+            self-balancing robot and a Wall-E-inspired build, to a wildfire-detection system with GSM alerts,
+            and most recently AI-driven systems like an ESP32-CAM face-recognition attendance tracker. Each
+            project builds on the last: better sensor fusion, tighter hardware-software integration, and
+            growing comfort letting physical systems make their own decisions.
+          </p>
+        </div>
+      </section>
+
       <section id="robotics-projects">
         <div className="projects-grid">
           {PROJECTS.map((project) => (

@@ -26,6 +26,24 @@
   z-index: 1;
 }
 
+/* JOURNEY SECTION */
+#robotics-journey {
+  padding: 0 56px 60px;
+}
+
+.journey-body {
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.journey-body p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
 /* PROJECTS SECTION */
 #robotics-projects {
   padding: 80px 56px;
@@ -153,6 +171,15 @@
 @media (max-width: 768px) {
   #robotics-hero {
     padding: 80px 28px 40px;
+  }
+
+  #robotics-journey {
+    padding: 0 28px 40px;
+  }
+
+  .journey-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   #robotics-projects {
