@@ -26,6 +26,23 @@
   z-index: 1;
 }
 
+/* JOURNEY SECTION */
+#photography-journey {
+  padding: 0 56px 60px;
+}
+
+.journey-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.journey-body p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
 /* FILTER BUTTONS */
 #photography-filters {
   padding: 40px 56px 20px;
@@ -229,6 +246,15 @@
 @media (max-width: 768px) {
   #photography-hero {
     padding: 80px 28px 40px;
+  }
+
+  #photography-journey {
+    padding: 0 28px 40px;
+  }
+
+  .journey-body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   #photography-filters {

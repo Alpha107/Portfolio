@@ -18,6 +18,27 @@ export default function Photography() {
         </div>
       </section>
 
+      <section id="photography-journey">
+        <div className="journey-body">
+          <p>
+            I picked up my first camera in 2025 — not as a hobby I'd been building toward, but as a way to
+            finally hold onto something I'd wanted since childhood: the ability to actually keep a moment
+            instead of just remembering it. Growing up in Lamjung and later moving through the streets of
+            Kathmandu, I'd always noticed the small, unrepeatable things — light falling a certain way, a
+            stranger's expression, a building weathered just so — and never had a way to hold onto them
+            beyond memory. The camera changed that.
+          </p>
+          <p>
+            Since then, street photography has become the practice that pulls me out of screens and code
+            and back into paying attention — to faces in passing, to Boudhanath at dusk, to the quiet
+            architecture of the valley. It's also taught me things that feed back into my engineering work:
+            framing, patience, and knowing when to wait for the right moment instead of forcing it. What
+            started as catching up on years of moments I'd missed has become a discipline of its own — one
+            photograph, one walk through the city, at a time.
+          </p>
+        </div>
+      </section>
+
       <section id="photography-filters">
         <div className="filter-buttons">
           {categories.map((cat) => (
