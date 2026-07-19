@@ -21,10 +21,11 @@ export default function Photography() {
       <section id="photography-journey">
         <div className="journey-body">
           <p>
-            I picked up my first camera in 2025 — not as a hobby I'd been building toward, but as a way to
-            finally hold onto something I'd wanted since childhood: the ability to actually keep a moment
-            instead of just remembering it. Growing up in Lamjung and later moving through the streets of
-            Kathmandu, I'd always noticed the small, unrepeatable things — light falling a certain way, a
+            I bought my first camera in 2025 — a second-hand one, saved for over five months from my first
+            income, because it mattered enough to wait for. It wasn't a hobby I'd been building toward, but
+            a way to finally hold onto something I'd wanted since childhood: the ability to actually keep a
+            moment instead of just remembering it. Growing up in Lamjung and later moving through the streets
+            of Kathmandu, I'd always noticed the small, unrepeatable things — light falling a certain way, a
             stranger's expression, a building weathered just so — and never had a way to hold onto them
             beyond memory. The camera changed that.
           </p>
