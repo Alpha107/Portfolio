@@ -1,6 +1,18 @@
 export const EDUCATION = [
   {
     id: 1,
+    degree: "MSc Robotics and Artificial Intelligence",
+    field: "Robotics & Artificial Intelligence",
+    institution: "Cardiff Metropolitan University",
+    location: "Cardiff, United Kingdom",
+    year: "2026 (Incoming)",
+    highlights: [
+      "Postgraduate study extending undergraduate work in AI, ML, and Robotics",
+      "Focus areas: intelligent robotic systems, computer vision, and applied AI"
+    ]
+  },
+  {
+    id: 2,
     degree: "Bachelor of Computer Engineering",
     field: "Computer Engineering",
     institution: "National College of Engineering",
@@ -15,7 +27,7 @@ export const EDUCATION = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     degree: "Higher Secondary Education (+2)",
     field: "Science",
     institution: "Kathmandu Bernhardt College",
@@ -26,7 +38,7 @@ export const EDUCATION = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     degree: "Secondary Education Examination (SEE)",
     field: "General Education",
     institution: "Shree Ishaneshwor Madhyamik Vidyalaya",
