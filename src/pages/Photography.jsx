@@ -21,13 +21,14 @@ export default function Photography() {
       <section id="photography-journey">
         <div className="journey-body">
           <p>
-            I bought my first camera in 2025 — a second-hand one, saved for over five months from my first
-            income, because it mattered enough to wait for. It wasn't a hobby I'd been building toward, but
-            a way to finally hold onto something I'd wanted since childhood: the ability to actually keep a
-            moment instead of just remembering it. Growing up in Lamjung and later moving through the streets
-            of Kathmandu, I'd always noticed the small, unrepeatable things — light falling a certain way, a
-            stranger's expression, a building weathered just so — and never had a way to hold onto them
-            beyond memory. The camera changed that.
+            I bought my first camera in 2025 — a second-hand Canon M50 Mark II with the kit lens, saved for
+            over five months from my first income, because it mattered enough to wait for. A 55-250mm lens
+            followed not long after, once I understood what I actually wanted to shoot. It wasn't a hobby
+            I'd been building toward, but a way to finally hold onto something I'd wanted since childhood:
+            the ability to actually keep a moment instead of just remembering it. Growing up in Lamjung and
+            later moving through the streets of Kathmandu, I'd always noticed the small, unrepeatable things
+            — light falling a certain way, a stranger's expression, a building weathered just so — and never
+            had a way to hold onto them beyond memory. The camera changed that.
           </p>
           <p>
             Since then, street photography has become the practice that pulls me out of screens and code
