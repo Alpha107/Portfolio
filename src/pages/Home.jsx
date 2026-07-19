@@ -16,38 +16,6 @@ const HERO_IMAGE = 'images/hero.jpg'
 const PROJECTS = [
   {
     id: 1,
-    title: 'Video-in-Video Steganography',
-    category: 'Deep Learning · Major Project',
-    description: 'Embedded one video inside another using deep learning; developed optimized encoding/decoding pipelines for imperceptible data hiding.',
-    tags: ['Deep Learning', 'Python', 'CNNs', 'Data Security'],
-    github: 'https://github.com/Alpha107/Deep-Learning-Based-Video-in-Video-Steganography'
-  },
-  {
-    id: 2,
-    title: 'Fruit Spoilage Detection System',
-    category: 'Computer Vision · Minor Project',
-    description: 'CNN-based spoilage detection across Apple, Banana, Orange, and Grapes. Built a custom combined_generator enabling multi-preprocessing pipelines simultaneously — iterating 8-10 models to reach 97.82% accuracy and 98% F1-score.',
-    tags: ['CNN', 'Python', 'OpenCV', 'Custom Generator', 'Adam Optimizer'],
-    github: 'https://github.com/Alpha107/Fruit-Spoilage-Detection-System'
-  },
-  {
-    id: 3,
-    title: 'Handwritten Digit Recognition',
-    category: 'Deep Learning · CNN',
-    description: 'CNN model for MNIST handwritten digit classification; tuned hyperparameters to reduce overfitting and compared architectures for optimal performance.',
-    tags: ['CNN', 'Python', 'NumPy', 'MNIST', 'Deep Learning'],
-    github: 'https://github.com/Alpha107'
-  },
-  {
-    id: 4,
-    title: 'Nepali Plate Recognition',
-    category: 'ML · Computer Vision · Digit Recognition',
-    description: 'Automatic number plate recognition system recognizing English and Nepali characters; addresses multilingual and compound glyph complexities.',
-    tags: ['CNN', 'OpenCV', 'TensorFlow', 'Python', 'NumPy'],
-    github: 'https://github.com/Alpha107/Nepali-Number-Plate-Recognition-System'
-  },
-  {
-    id: 5,
     title: 'Obstacle Avoidance & Line-Following Robot',
     category: 'Robotics · Embedded Systems',
     description: 'Sensor-integrated robotic navigation system with optimized hardware-software interaction for autonomous path following.',
@@ -55,15 +23,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107'
   },
   {
-    id: 6,
-    title: 'IoT Smart Systems',
-    category: 'IoT · Automation',
-    description: 'Smart irrigation, parking, and water tank monitoring systems built with IoT principles and real-time data feedback loops.',
-    tags: ['IoT', 'Arduino', 'Automation', 'C++'],
-    github: 'https://github.com/Alpha107'
-  },
-  {
-    id: 7,
+    id: 2,
     title: 'Sound & Remote Controlled Robots',
     category: 'Robotics · Prototyping',
     description: 'Sound and remote-controlled robotic prototypes with full hardware-software integration and responsive control systems.',
@@ -71,15 +31,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107'
   },
   {
-    id: 8,
-    title: 'RoboInventory',
-    category: 'Web Application · Management',
-    description: 'Full-stack inventory and workflow management for robotics labs; centralizes component tracking, workflow, and financial logging.',
-    tags: ['Flask', 'HTML/CSS/JS', 'Python', 'MySQL'],
-    github: 'https://github.com/Alpha107/RoboInventory'
-  },
-  {
-    id: 9,
+    id: 3,
     title: 'Smart Medicine Dispenser',
     category: 'Robotics · IoT · Prototyping',
     description: 'Automated dispenser opening compartments based on time and proximity; includes GSM notifications for patient medication reminders.',
@@ -87,7 +39,103 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107'
   },
   {
+    id: 4,
+    title: 'Self-Balancing Robot — ESP32 Firmware',
+    category: 'Robotics · Embedded Systems',
+    description: 'ESP32 firmware for a self-balancing two-wheel robot, implementing real-time sensor fusion and PID control for dynamic stability.',
+    tags: ['ESP32', 'PID Control', 'C++', 'Sensor Fusion'],
+    github: 'https://github.com/Alpha107/Self-Balancing-Robot-ESP32-Firmware'
+  },
+  {
+    id: 5,
+    title: 'Wall-E-Inspired Balancing Robot',
+    category: 'Robotics · Mechanical Design',
+    description: 'A personal robot inspired by Wall-E, featuring two drive wheels, a support wheel, and a sensor-equipped head — exploring mechanical design, sensor integration, and balance management.',
+    tags: ['Arduino', 'Mechanical Design', 'Ultrasonic Sensors', 'C++'],
+    github: 'https://github.com/Alpha107/Wall-E-Inspired-Two-Wheel-Balancing-Robot'
+  },
+  {
+    id: 6,
+    title: 'Wildfire Detection System',
+    category: 'Embedded Systems · IoT · Safety',
+    description: 'ESP32-based early fire detection system using MQ-2 smoke sensors and infrared flame sensors; triggers local alarms and dispatches timestamped SMS alerts via GSM module for real-time forest fire monitoring.',
+    tags: ['ESP32', 'IoT', 'GSM', 'Sensors', 'C++'],
+    github: 'https://github.com/Alpha107/Wildfire-Detection-System-Using-ESP32'
+  },
+  {
+    id: 7,
+    title: 'ESP32 Battery Telemetry Monitor',
+    category: 'Embedded Systems · IoT · Dashboard',
+    description: 'Real-time battery telemetry monitoring system streaming voltage, current, and health metrics from an ESP32 to a live web dashboard.',
+    tags: ['ESP32', 'IoT', 'TypeScript', 'Real-Time Dashboard'],
+    github: 'https://github.com/Alpha107/ESP32-Based-Battery-Telemetry-Monitor'
+  },
+  {
+    id: 8,
+    title: 'IoT Smart Systems',
+    category: 'IoT · Automation',
+    description: 'Smart irrigation, parking, and water tank monitoring systems built with IoT principles and real-time data feedback loops.',
+    tags: ['IoT', 'Arduino', 'Automation', 'C++'],
+    github: 'https://github.com/Alpha107'
+  },
+  {
+    id: 9,
+    title: 'Smart Attendance System — Face Recognition',
+    category: 'IoT · Computer Vision',
+    description: 'Face-recognition-based attendance system using an ESP32-CAM for image capture and Python for recognition and logging, automating classroom or office check-ins.',
+    tags: ['ESP32-CAM', 'Face Recognition', 'Python', 'OpenCV', 'IoT'],
+    github: 'https://github.com/Alpha107/Smart-Attendance-System-Face-Recognition-via-ESP32-CAM'
+  },
+  {
     id: 10,
+    title: 'Smart Energy Monitor',
+    category: 'IoT · Automation · Data Visualization',
+    description: 'Real-time energy consumption monitoring system tracking usage patterns and providing data-driven insights for efficiency optimization.',
+    tags: ['Python', 'IoT', 'Data Visualization', 'Automation'],
+    github: 'https://github.com/Alpha107/Smart-Energy-Monitor'
+  },
+  {
+    id: 11,
+    title: 'Video-in-Video Steganography',
+    category: 'Deep Learning · Major Project',
+    description: 'Embedded one video inside another using deep learning; developed optimized encoding/decoding pipelines for imperceptible data hiding.',
+    tags: ['Deep Learning', 'Python', 'CNNs', 'Data Security'],
+    github: 'https://github.com/Alpha107/Deep-Learning-Based-Video-in-Video-Steganography'
+  },
+  {
+    id: 12,
+    title: 'Fruit Spoilage Detection System',
+    category: 'Computer Vision · Minor Project',
+    description: 'CNN-based spoilage detection across Apple, Banana, Orange, and Grapes. Built a custom combined_generator enabling multi-preprocessing pipelines simultaneously — iterating 8-10 models to reach 97.82% accuracy and 98% F1-score.',
+    tags: ['CNN', 'Python', 'OpenCV', 'Custom Generator', 'Adam Optimizer'],
+    github: 'https://github.com/Alpha107/Fruit-Spoilage-Detection-System'
+  },
+  {
+    id: 13,
+    title: 'Handwritten Digit Recognition',
+    category: 'Deep Learning · CNN',
+    description: 'CNN model for MNIST handwritten digit classification; tuned hyperparameters to reduce overfitting and compared architectures for optimal performance.',
+    tags: ['CNN', 'Python', 'NumPy', 'MNIST', 'Deep Learning'],
+    github: 'https://github.com/Alpha107'
+  },
+  {
+    id: 14,
+    title: 'Nepali Plate Recognition',
+    category: 'ML · Computer Vision · Digit Recognition',
+    description: 'Automatic number plate recognition system recognizing English and Nepali characters; addresses multilingual and compound glyph complexities.',
+    tags: ['CNN', 'OpenCV', 'TensorFlow', 'Python', 'NumPy'],
+    github: 'https://github.com/Alpha107/Nepali-Number-Plate-Recognition-System'
+  },
+  {
+    id: 15,
+    title: 'RoboInventory',
+    category: 'Web Application · Management',
+    description: 'Full-stack inventory and workflow management for robotics labs; centralizes component tracking, workflow, and financial logging.',
+    tags: ['Flask', 'HTML/CSS/JS', 'Python', 'MySQL'],
+    github: 'https://github.com/Alpha107/RoboInventory'
+  },
+  {
+    id: 16,
     title: 'AgroNepal Intelligence',
     category: 'Web App · ML · NLP',
     description: 'AI-driven agricultural platform for all 77 Nepal districts; combines satellite climate data, ML, and geographic visualization for crop recommendations.',
@@ -95,7 +143,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107/AgroNepal-Intelligence'
   },
   {
-    id: 11,
+    id: 17,
     title: 'Nepal News Map Intelligence',
     category: 'Web App · NLP · Geospatial',
     description: 'Bilingual (English & Nepali) intelligence dashboard that geographically tags and visualizes breaking news across all 77 Nepal districts using custom NER, choropleth mapping, and a real-time async ingestion pipeline.',
@@ -103,7 +151,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107/Nepal-News-Map-Intelligence-Platform'
   },
   {
-    id: 12,
+    id: 18,
     title: 'WorldNewsViewer — 3D Globe',
     category: 'Web App · AI · Data Visualization',
     description: 'Real-time geopolitical dashboard on a WebGL 3D globe; performs in-browser AI sentiment analysis and semantic event clustering across 6 news categories using TensorFlow.js and Universal Sentence Encoder — no backend required.',
@@ -111,7 +159,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107/WorldNewsViewer-3D-Global-News-Simulator'
   },
   {
-    id: 13,
+    id: 19,
     title: 'Breast Cancer Detection System',
     category: 'ML · Medical AI · Classification',
     description: 'Comparative study of CNN, Random Forest, Logistic Regression, and Decision Tree on 569 breast mass samples; CNN achieved 98.25% accuracy with full precision/recall/F1 analysis and correlation heatmaps.',
@@ -119,7 +167,7 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107/Breast-Cancer-Detection-System-using-CNN-Logistic-Regression-and-Random-Forest-Classifier'
   },
   {
-    id: 14,
+    id: 20,
     title: 'Nvidia Stock Price Prediction',
     category: 'Deep Learning · Time Series · Finance',
     description: 'Parallel CNN and LSTM models predicting Nvidia stock prices from historical OHLCV data; CNN outperformed LSTM achieving R² of 0.986, RMSE of 1.40 — demonstrating CNN\'s strength in local time-series pattern extraction.',
@@ -127,20 +175,52 @@ const PROJECTS = [
     github: 'https://github.com/Alpha107/Nvidia-Stock-Price-Prediction-Model-using-CNN-and-LSTM'
   },
   {
-    id: 15,
-    title: 'Wildfire Detection System',
-    category: 'IoT · Embedded Systems · Safety',
-    description: 'ESP32-based early fire detection system using MQ-2 smoke sensors and infrared flame sensors; triggers local alarms and dispatches timestamped SMS alerts via GSM module for real-time forest fire monitoring.',
-    tags: ['ESP32', 'IoT', 'GSM', 'Sensors', 'C++'],
-    github: 'https://github.com/Alpha107/Wildfire-Detection-System-Using-ESP32'
-  },
-  {
-    id: 16,
+    id: 21,
     title: 'Audio Steganography — Spread Spectrum',
     category: 'Signal Processing · Data Security',
     description: 'Covert data embedding in audio using Direct Sequence Spread Spectrum (DSSS); spreads hidden data across wide frequency bands via pseudo-random sequences — achieving SNR of 40.27 dB and MSE of 1.44×10⁻⁶ for imperceptible hiding.',
     tags: ['Python', 'DSP', 'DSSS', 'Signal Processing', 'Audio'],
     github: 'https://github.com/Alpha107/Audio-Steganography-using-Spread-Spectrum'
+  },
+  {
+    id: 22,
+    title: 'Location-Based Restaurant Discovery App',
+    category: 'Web App · FastAPI · Streamlit',
+    description: 'A location-based restaurant discovery app powered entirely by free and open data sources — no API key, billing, or credit card required.',
+    tags: ['FastAPI', 'Streamlit', 'Python', 'Geolocation'],
+    github: 'https://github.com/Alpha107/Recipe-Generator'
+  },
+  {
+    id: 23,
+    title: 'Face Mask Detection System',
+    category: 'Computer Vision · CNN',
+    description: 'CNN-based real-time face mask detection system for public health compliance monitoring.',
+    tags: ['CNN', 'OpenCV', 'Python', 'Computer Vision'],
+    github: 'https://github.com/Alpha107/Face-Mask-Detection-System'
+  },
+  {
+    id: 24,
+    title: 'Loan Approval Prediction',
+    category: 'ML · Classification',
+    description: 'CNN-based model predicting loan approval outcomes from applicant financial and demographic data.',
+    tags: ['CNN', 'Python', 'TensorFlow', 'Classification'],
+    github: 'https://github.com/Alpha107/Loan-Approval-Prediction-using-Convolutional-Neural-Network-CNN-'
+  },
+  {
+    id: 25,
+    title: 'Audio Steganography — DCT',
+    category: 'Signal Processing · Data Security',
+    description: 'Covert data embedding in audio signals using Discrete Cosine Transform (DCT) coefficients for imperceptible, frequency-domain data hiding.',
+    tags: ['Python', 'DSP', 'DCT', 'Signal Processing', 'Audio'],
+    github: 'https://github.com/Alpha107/Audio-Steganography-using-DCT'
+  },
+  {
+    id: 26,
+    title: 'Audio Steganography — DWT',
+    category: 'Signal Processing · Data Security',
+    description: 'Covert data embedding in audio using Discrete Wavelet Transform (DWT) decomposition for robust, imperceptible data hiding across frequency sub-bands.',
+    tags: ['Python', 'DSP', 'DWT', 'Signal Processing', 'Audio'],
+    github: 'https://github.com/Alpha107/Audio-Steganography-using-DWT'
   }
 ]
 
@@ -223,7 +303,7 @@ export default function Home() {
             <div className="stat-divider" />
             <div className="stat"><span className="stat-value">150+</span><span className="stat-label">Students Mentored</span></div>
             <div className="stat-divider" />
-            <div className="stat"><span className="stat-value">16+</span><span className="stat-label">AI/ML Projects</span></div>
+            <div className="stat"><span className="stat-value">26+</span><span className="stat-label">AI/ML Projects</span></div>
           </div>
         </div>
 
@@ -292,7 +372,7 @@ export default function Home() {
           <div className="about-facts" data-animate data-delay="2">
             {[
               { value: '2025', label: 'BE Computer Engineering', sub: 'National College of Engineering' },
-              { value: '16+',  label: 'AI / ML Projects Built',  sub: 'Computer vision · NLP · Robotics' },
+              { value: '26+',  label: 'AI / ML Projects Built',  sub: 'Computer vision · NLP · Robotics' },
               { value: '150+', label: 'Students Mentored',       sub: 'Python · AI · Embedded Systems' },
               { value: '2',    label: 'Creative Disciplines',    sub: 'Street Photography · Painting' },
             ].map((f, i) => (
