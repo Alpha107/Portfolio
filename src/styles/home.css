@@ -841,6 +841,25 @@
 
 .project-link:hover { color: var(--accent2); }
 
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.project-link--demo {
+  background: var(--accent);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.project-link--demo:hover {
+  background: var(--accent2);
+  color: var(--white);
+}
+
 /* ════════════════════════════════════════════════════════
    06 EDUCATION
    ════════════════════════════════════════════════════════ */

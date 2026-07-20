@@ -21,6 +21,7 @@ const PROJECTS = [
     description: 'An interactive learning platform for robotics hardware and theory: 132 hand-modeled 3D components, 28 guided build projects with interactive 3D/2D assembly views, and 52 university-level theory topics, all cross-linked into one site. Zero external 3D assets, zero backend — every model is hand-built from primitives in React Three Fiber, with content as versioned JSON.',
     tags: ['React', 'TypeScript', 'React Three Fiber', 'Three.js', 'Vite'],
     github: 'https://github.com/Alpha107/Robo_Codex',
+    demo: 'https://www.abasheshranabhat.com.np/Robo_Codex',
     featured: true
   },
   {
@@ -466,9 +467,14 @@ export default function Home() {
                 <div className="project-tags">
                   {project.tags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
                 </div>
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="project-link">GitHub →</a>
-                )}
+                <div className="project-links">
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noreferrer" className="project-link project-link--demo">View Project →</a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noreferrer" className="project-link">GitHub →</a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
