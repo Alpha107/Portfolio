@@ -729,6 +729,30 @@
   transform: scaleX(1);
 }
 
+.project-card--featured {
+  grid-column: span 2;
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--card) 0%, var(--accent-light) 150%);
+}
+
+.project-card--featured::before {
+  transform: scaleX(1);
+}
+
+.featured-badge {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--accent);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-family: 'Space Mono', monospace;
+}
+
 .project-num {
   position: absolute;
   bottom: 20px;
