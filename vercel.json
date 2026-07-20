@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/Robo_Codex", "destination": "https://robo-codex.vercel.app" },
-    { "source": "/Robo_Codex/(.*)", "destination": "https://robo-codex.vercel.app/$1" }
+    { "source": "/Robo_Codex/(.*)", "destination": "https://robo-codex.vercel.app/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
